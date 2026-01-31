@@ -1,0 +1,165 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DripCapybara/Test/main/Doors/Functions.lua"))()
+local num=0
+local currentLoadedRoom = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+if currentLoadedRoom:FindFirstChild("Nodes") then
+   num = math.floor(#currentLoadedRoom.Nodes:GetChildren()/2)
+end
+
+local eyes = Instance.new("Part")
+eyes.Size = Vector3.new(5,5,5)
+eyes.Anchored = true
+eyes.Transparency = 1
+eyes.CanCollide = false
+eyes.CastShadow = false
+eyes.Parent = workspace
+
+local billboard = Instance.new("BillboardGui")
+billboard.Size = UDim2.new(12,0,12,0)
+billboard.AlwaysOnTop = false
+billboard.StudsOffset = Vector3.new(0,0.3,0)
+billboard.Adornee = eyes
+billboard.Parent = eyes
+
+local imageLabel = Instance.new("ImageLabel")
+imageLabel.Size = UDim2.new(1,0,1,0)
+imageLabel.BackgroundTransparency = 1
+imageLabel.Parent = billboard
+imageLabel.Image = "rbxassetid://102210320660397"
+local model = eyes
+	if not model then return end
+
+	local mainPart = eyes
+	if not mainPart then return end
+
+	-- ===== RANDOM SPAWN IN ROOM =====
+	local room = workspace.CurrentRooms
+		:FindFirstChild(game.ReplicatedStorage.GameData.LatestRoom.Value)
+
+	if room and room:FindFirstChild("Parts")
+		and room.Parts:FindFirstChild("Floor") then
+
+		local floor = room.Parts.Floor
+		local size = floor.Size
+
+		local offsetX = math.random(-size.X/2 + 2, size.X/2 - 2)
+		local offsetZ = math.random(-size.Z/2 + 2, size.Z/2 - 2)
+
+		mainPart.CFrame =
+			floor.CFrame
+			* CFrame.new(offsetX, 5, offsetZ)
+	end
+
+local function v15(p12, p13)
+        writefile(p13 .. ".mp3", game:HttpGet(p12))
+        local v144 = Instance.new("Sound")
+        v144.SoundId = (getcustomasset or getsynasset)(p13 .. ".mp3")
+        return v144
+    end
+local SoundGothub = v15("https://raw.githubusercontent.com/VoorPhale012/Dreda/refs/heads/main/RPReplay_Final1769780560%20(mp3cut.net).mp3?raw=true", "Dream")
+
+local sound = SoundGothub:Clone()
+sound.Name = "Dreamcore"
+sound.Volume = 1
+sound.Parent = eyes
+sound.Looped = true
+sound.RollOffMaxDistance = 40
+sound.RollOffMinDistance = 5
+sound:Play()
+
+task.spawn(function()
+            game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+            eyes:Destroy()
+          wait(2)
+-- One-time execute guard
+if getgenv()._MUSH_ALREADY_EXECUTED then
+    warn("[SCRIPT] Script đã được chạy trước đó, từ chối execute!")
+    return
+end
+
+getgenv()._MUSH_ALREADY_EXECUTED = true
+
+-- ======================
+-- SCRIPT CHÍNH BẮT ĐẦU Ở ĐÂY
+-- ======================
+
+print("[SCRIPT] Execute lần đầu thành công!")
+
+local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/Voor-Pr00/Achivements/refs/heads/main/Voorpr0"))()
+
+---====== Display achievement ======---
+achievementGiver({
+    Title = "The Mushroom?",
+    Desc = "...",
+    Reason = "Survived Mushcore.",
+    Image = GetGitImage("https://github.com/VoorPhale012/Dreda/blob/main/3E23D044-D78F-47FA-A4E5-869C40CDFA4D.png?raw=true","Mush")
+})
+end)
+
+function touch()
+                    local v171 = game.Players.LocalPlayer.Character.Humanoid
+                    if v171 then
+                        v171.Health = 99
+-- UI Construction
+    local JumpscareGui = Instance.new("ScreenGui")
+    local Background = Instance.new("Frame")
+    local Face = Instance.new("ImageLabel")
+
+    JumpscareGui.Name = "JumpscareGui"
+    JumpscareGui.IgnoreGuiInset = true
+    JumpscareGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    JumpscareGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+    Background.Name = "Background"
+    Background.BackgroundColor3 = Color3.fromRGB(3, 25, 99)
+    Background.BorderSizePixel = 0
+    Background.Size = UDim2.new(1, 0, 1, 0)
+    Background.ZIndex = 999
+
+    Face.Name = "Face"
+    Face.AnchorPoint = Vector2.new(0.5, 0.5)
+    Face.BackgroundTransparency = 1
+    Face.Position = UDim2.new(0.5, 0, 0.5, 0)
+    Face.ResampleMode = Enum.ResamplerMode.Pixelated
+    Face.Size = UDim2.new(0, 150, 0, 150)
+    Face.Image = "rbxassetid://139365595319954"
+
+    Background.Parent = JumpscareGui
+    Face.Parent = Background
+local scare = Instance.new("Sound")
+scare.Parent = JumpscareGui
+scare.Name = "MyEarsBurn"
+scare.SoundId = "rbxassetid://132841501513939"
+scare.PlaybackSpeed = 1
+scare.Volume = 3
+
+local shift = Instance.new("PitchShiftSoundEffect")
+shift.Octave = 0.5
+shift.Parent = scare
+
+local distort = Instance.new("DistortionSoundEffect")
+distort.Parent = scare
+distort.Level = 0.75
+
+local eq = Instance.new("EqualizerSoundEffect")
+eq.HighGain = 10
+eq.MidGain = 10
+eq.LowGain = 3.7
+eq.Parent = scare
+    
+        task.spawn(function()
+            while JumpscareGui.Parent do
+                Background.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+                task.wait(math.random(25, 100) / 1000)
+                Background.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+                task.wait(math.random(25, 100) / 1000)
+            end
+        end)
+
+    game.TweenService:Create(Face, TweenInfo.new(0.6), {Size = UDim2.new(0, 1850, 0, 1050), ImageTransparency = 0}):Play()
+    scare:Play()
+    task.wait(0.7)
+    game:Shutdown()
+                    end
+                end
+
+                eyes.Touched:Connect(touch)
