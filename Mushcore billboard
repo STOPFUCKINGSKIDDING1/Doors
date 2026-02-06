@@ -31,6 +31,27 @@ local model = eyes
 	local mainPart = eyes
 	if not mainPart then return end
 
+-- ===== DOOR DISTANCE CHECK =====
+local MIN_DISTANCE_FROM_DOOR = 12 -- chỉnh xa gần tùy m
+
+local function GetDoor()
+    local latestRoom = game.ReplicatedStorage.GameData.LatestRoom.Value
+    local room = workspace.CurrentRooms:FindFirstChild(latestRoom)
+    if room and room:FindFirstChild("Door") and room.Door:FindFirstChild("Door") then
+        return room.Door.Door -- MeshPart
+    end
+end
+
+local function IsFarFromDoor(pos)
+    local door = GetDoor()
+    if not door or not door:IsA("BasePart") then
+        return true
+    end
+
+    local distance = (pos - door.Position).Magnitude
+    return distance >= MIN_DISTANCE_FROM_DOOR
+end
+
 	-- ===== RANDOM SPAWN IN ROOM =====
 	local room = workspace.CurrentRooms
 		:FindFirstChild(game.ReplicatedStorage.GameData.LatestRoom.Value)
@@ -41,12 +62,20 @@ local model = eyes
 		local floor = room.Parts.Floor
 		local size = floor.Size
 
-		local offsetX = math.random(-size.X/2 + 2, size.X/2 - 2)
-		local offsetZ = math.random(-size.Z/2 + 2, size.Z/2 - 2)
+		local pos
+local attempts = 0
 
-		mainPart.CFrame =
-			floor.CFrame
-			* CFrame.new(offsetX, 5, offsetZ)
+repeat
+    attempts += 1
+
+    local offsetX = math.random(-size.X/2 + 2, size.X/2 - 2)
+    local offsetZ = math.random(-size.Z/2 + 2, size.Z/2 - 2)
+
+    pos = (floor.CFrame * CFrame.new(offsetX, 5, offsetZ)).Position
+
+until IsFarFromDoor(pos) or attempts > 30 -- tránh loop vô hạn
+
+mainPart.Position = pos
 	end
 
 local function v15(p12, p13)
