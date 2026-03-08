@@ -13,7 +13,7 @@ function GitAud(soundlink, filename)
 	if typeof(getAsset) == "function" then  
 		return getAsset(filename..".mp3")  
 	else  
-		warn("getcustomasset/getsynasset khÃ´ng kháº£ dá»¥ng!")  
+		warn("getcustomasset/getsynasset không khả dụng!")  
 		return ""  
 	end
 end
@@ -89,7 +89,7 @@ local entity = spawner.Create({
 	}
 })
 
---====== OnSpawned (GIá»® LIGHTING + COLOR) ======--
+--====== OnSpawned (GIỮ LIGHTING + COLOR) ======--
 entity:SetCallback("OnSpawned", function()
 	print("Seraphim Mortis has spawned")
 
