@@ -55,7 +55,7 @@ local entity = spawner.Create({
 		Hints = {
 			"Hmm, Blitz?",
 			"is being a bully, huh?",
-			"Donâ€™t worry, I believe in you",
+			"Don’t worry, I believe in you",
 			"When it screams and the ground shakes, just hide quickly, okay?",
 			"bye :3"
 		}
@@ -63,7 +63,7 @@ local entity = spawner.Create({
 })
 
 --------------------------------------------------
--- ðŸŒŒ COLOR CORRECTION (PURPLE + TRUE RESET)
+-- 🌌 COLOR CORRECTION (PURPLE + TRUE RESET)
 --------------------------------------------------
 local Lighting = game:GetService("Lighting")
 local TweenService = game:GetService("TweenService")
@@ -105,7 +105,7 @@ local function applyEffect()
 	local t2 = TweenService:Create(
 		cc,
 		TweenInfo.new(5),
-		{ TintColor = Color3.fromRGB(170, 0, 233) } -- ðŸ’œ tÃ­m Ä‘áº­m
+		{ TintColor = Color3.fromRGB(170, 0, 233) } -- 💜 tím đậm
 	)
 
 	table.insert(activeTweens, t1)
@@ -126,7 +126,7 @@ local function resetEffect()
 	local resetTween = TweenService:Create(
 		cc,
 		TweenInfo.new(2),
-		{ TintColor = Color3.fromRGB(255, 255, 255) } -- ðŸ” bÃ¬nh thÆ°á»ng
+		{ TintColor = Color3.fromRGB(255, 255, 255) } -- 🔁 bình thường
 	)
 
 	table.insert(activeTweens, resetTween)
@@ -141,7 +141,7 @@ entity:SetCallback("OnSpawned", function()
 
 	applyEffect()
 
-	-- â±ï¸ auto reset sau 10 giÃ¢y
+	-- ⏱️ auto reset sau 10 giây
 	task.delay(10, function()
 		resetEffect()
 	end)
@@ -180,7 +180,7 @@ end)
 entity:Run()
 
 --------------------------------------------------
--- ðŸ”Š SOUNDS
+-- 🔊 SOUNDS
 --------------------------------------------------
 local sound1 = Instance.new("Sound")
 sound1.SoundId = "rbxassetid://2357464981"
