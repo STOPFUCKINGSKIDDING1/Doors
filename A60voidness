@@ -10,7 +10,7 @@ local entity = spawner.Create({
 		Asset = "https://github.com/vuivuiviu2/Pressure-/raw/main/a-600.rbxm",
 		HeightOffset = 0
 	},
-	Lights = {  -- nÃ o 
+	Lights = {  -- nào 
 		Flicker = {
 			Enabled = false,
 			Duration = 0.8
@@ -34,7 +34,7 @@ entity:SetCallback("OnSpawned", function()
 	if not Player then return end
 	local PlayerGui = Player:WaitForChild("PlayerGui")
 
-	-- ===== Static nháº¥p nhÃ¡y =====
+	-- ===== Static nhấp nháy =====
 	local staticGui = Instance.new("ScreenGui")
 	staticGui.Name = "A60Static"
 	staticGui.IgnoreGuiInset = true
@@ -45,12 +45,12 @@ entity:SetCallback("OnSpawned", function()
 	staticImg.Size = UDim2.new(1,0,1,0)
 	staticImg.Position = UDim2.new(0,0,0,0)
 	staticImg.BackgroundTransparency = 1
-	staticImg.Image = "rbxassetid://120865463688240" -- texture static má»›i
+	staticImg.Image = "rbxassetid://120865463688240" -- texture static mới
 	staticImg.ImageTransparency = 0.95
 	staticImg.ZIndex = 50
 	staticImg.Parent = staticGui
 
-	-- Nháº¥p nhÃ¡y nháº¹
+	-- Nhấp nháy nhẹ
 	local running = true
 	spawn(function()
 		while running do
@@ -61,13 +61,13 @@ entity:SetCallback("OnSpawned", function()
 		end
 	end)
 
-	-- XÃ³a static sau 5 giÃ¢y náº¿u chÆ°a despawn
+	-- Xóa static sau 5 giây nếu chưa despawn
 	task.delay(5, function()
 		running = false
 		if staticGui then staticGui:Destroy() end
 	end)
 
-	-- ===== OnSpawned gá»‘c (text label) =====
+	-- ===== OnSpawned gốc (text label) =====
 	task.delay(4, function()
 		local ScreenGui = Instance.new("ScreenGui")
 		ScreenGui.Name = "A60Message"
